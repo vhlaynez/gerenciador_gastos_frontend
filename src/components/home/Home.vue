@@ -1,23 +1,21 @@
 <template>
   <div>
-    <section>
-      <div class="container">
-        <div class="row">
-          <!--  {{gastos}} -->
-          <div v-for="(gastos,id_gasto) in gastos" :key="id_gasto" class="col-sm-3">
-            <div class="card">
-              <div
-                class="card-header bg-info"
-                style="color:white; text-align:center;"
-              >{{gastos.lugar}}</div>
-              <div class="card-body" style="text-align:center;">{{gastos.valor}}</div>
+    <div class="container">
+      <div class="display-4">Últimos gastos</div>
+      <div style="padding-top:10px;" class="row">
+        <div v-for="(gastos,id_gasto) in gastos" :key="id_gasto" class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                {{gastos.lugar}}
+              </div>
+
             </div>
+            <div class="card-text" style="text-align:center;">{{gastos.valor}}</div>
           </div>
-          <div class="col-sm-4"></div>
-          <div class="col-sm-4"></div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 

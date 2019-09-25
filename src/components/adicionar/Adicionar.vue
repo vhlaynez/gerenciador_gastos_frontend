@@ -14,6 +14,8 @@
                 <input class="form-control" id="valor" type="date">
             </div>
         </form>
+         <router-link  :to="{name:'relatorio'}"  > <button class="btn btn-light">Voltar</button>  </router-link> 
+    <button class="btn btn-success">Adicionar</button>
     </div>
 
 </template>
