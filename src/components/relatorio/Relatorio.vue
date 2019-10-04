@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <!-- {{gastos.data}} -->
-        <table class=" table table-striped">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Data</th>
@@ -14,13 +14,12 @@
                 <tr v-for="(gastos, id_gasto) in gastos.data" :key="id_gasto">
                     <td>{{gastos.data_gasto}}</td>
                     <td>{{gastos.lugar}}</td>
-                    <td>{{gastos.valor}} </td>
-                    <td> <router-link  :to="{name:'gasto',params:{id:`${gastos.id_gasto}`}}" >
+                    <td>{{gastos.valor}}</td>
+                    <td>
+                        <router-link :to="{name:'gasto',params:{id:`${gastos.id_gasto}`}}">
                             <button class="btn btn-outline-secondary">Detalhes</button>
-                        </router-link> 
-                            
-                             </td>
-                        
+                        </router-link>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -29,29 +28,27 @@
 
 
 <script>
-import axios from "axios";
-import { baseApiUrl } from "@/global";
-
+import axios from 'axios'
+import { baseApiUrl } from '@/global'
 
 export default {
-    name:'Relatorio',
-    data: function(){
-        return{
-            gastos:{}
+    name: 'Relatorio',
+    data: function() {
+        return {
+            gastos: {}
         }
-    },   
-     methods: {
-    get() {
-      const url = `${baseApiUrl}/gastos`;
+    },
+    methods: {
+        get() {
+            const url = `${baseApiUrl}/gastos`
 
-      axios(url).then(res => (this.gastos = res.data));
+            axios(url).then(res => (this.gastos = res.data))
+        }
+    },
+    mounted() {
+        this.get()
     }
-  },
-  mounted() {
-    this.get();
-  } 
 }
 </script>
 <style>
-
 </style>
