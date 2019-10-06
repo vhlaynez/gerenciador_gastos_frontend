@@ -35,7 +35,10 @@ export default {
     methods: {
         save() {
             const url = `${baseApiUrl}/gastos`
-            axios.post(url, this.gasto)
+            axios.post(url, this.gasto).then(() => {
+                this.$toasted.global.defaultSuccess()
+                this.gasto = {}
+            })
         }
     }
 }

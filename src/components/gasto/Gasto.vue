@@ -2,6 +2,14 @@
     <div class="container">
         {{gasto}}
         <form>
+            <label for="local">Local</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
             <div class="form-group">
                 <label for="local">Local</label>
                 <input class="form-control" id="local" type="text" v-model="gasto.lugar" />
@@ -33,6 +41,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 import axios from 'axios'
 import { baseApiUrl } from '@/global'
 
@@ -47,7 +57,15 @@ export default {
     methods: {
         get() {
             const url = `${baseApiUrl}/gastos/${this.gasto.id}`
-            axios(url).then(res => (this.gasto = res.data))
+            axios(url).then(res => {
+                this.gasto = res.data
+                this.gasto.data_gasto = moment(this.gasto.data_gasto).format(
+                    'YYYY-MM-DD'
+                )
+                this.gasto.data_criacao = moment(
+                    this.gasto.data_criacao
+                ).format('DD/MM/YYYY hh:mm:ss a')
+            })
         }
     },
     mounted() {

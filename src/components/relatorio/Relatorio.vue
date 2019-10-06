@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <!-- {{gastos.data}} -->
+        <!--  {{gastos}} -->
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -23,6 +23,12 @@
                 </tr>
             </tbody>
         </table>
+        <button
+            v-if="loadMore"
+            type="button"
+            @click="getGasto"
+            class="btn btn-secondary"
+        >Carregar mais</button>
     </div>
 </template>
 
@@ -35,7 +41,9 @@ export default {
     name: 'Relatorio',
     data: function() {
         return {
-            gastos: {}
+            gastos: {},
+            page: 1,
+            loadMore: true
         }
     },
     methods: {
@@ -43,6 +51,15 @@ export default {
             const url = `${baseApiUrl}/gastos`
 
             axios(url).then(res => (this.gastos = res.data))
+        },
+        getGasto() {
+            this.page++
+            const url = `${baseApiUrl}/gastos?page=${this.page}`
+            axios(url).then(res => {
+                this.gastos.data = this.gastos.data.concat(res.data.data)
+                if (res.data.data.length === 0 || res.data.data.length < 10)
+                    this.loadMore = false
+            })
         }
     },
     mounted() {
