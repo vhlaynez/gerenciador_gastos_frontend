@@ -5,6 +5,7 @@
             <thead>
                 <tr>
                     <th>Data</th>
+                    <th>Categoria</th>
                     <th>Local</th>
                     <th>Valor</th>
                     <th></th>
@@ -12,7 +13,8 @@
             </thead>
             <tbody>
                 <tr v-for="(gastos, id_gasto) in gastos.data" :key="id_gasto">
-                    <td>{{gastos.data_gasto}}</td>
+                    <td>{{gastos.data_gasto|formatDate}}</td>
+                    <td>{{gastos.categoria}}</td>
                     <td>{{gastos.lugar}}</td>
                     <td>{{gastos.valor}}</td>
                     <td>
@@ -34,6 +36,7 @@
 
 
 <script>
+import moment from 'moment'
 import axios from 'axios'
 import { baseApiUrl } from '@/global'
 
@@ -64,6 +67,13 @@ export default {
     },
     mounted() {
         this.get()
+    },
+    filters: {
+        formatDate: function(e) {
+            if (e) {
+                return moment(e).format('MM/DD/YYYY')
+            }
+        }
     }
 }
 </script>
