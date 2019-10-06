@@ -5,8 +5,10 @@ import 'font-awesome/css/font-awesome.css'
 import router from './config/router'
 import './config/msgs'
 import moment from 'moment'
+import money from 'v-money'
 
 Vue.use(moment)
+Vue.use(money, { precision: 2 })
 
 Vue.config.productionTip = false
 

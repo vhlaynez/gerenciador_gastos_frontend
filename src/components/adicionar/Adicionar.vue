@@ -7,7 +7,7 @@
             </div>
             <div class="form-group">
                 <label for="valor">Valor</label>
-                <input class="form-control" id="valor" type="number" v-model="gasto.valor" />
+                <money class="form-control" id="valor" v-model="gasto.valor"></money>
             </div>
             <div class="form-group">
                 <label for="valor">Data</label>
