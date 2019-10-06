@@ -1,15 +1,22 @@
 <template>
     <div class="container">
-        {{gasto}}
+        <!-- {{gasto}} -->
         <form>
-            <label for="local">Local</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+            <div class="form-group">
+                <label for="local">Categoria</label>
+                <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    v-model="gasto.categoria"
+                >
+                    <option>Lazer</option>
+                    <option>Educação</option>
+                    <option>Transporte</option>
+                    <option>Alimentação</option>
+                    <option>Mercado</option>
+                    <option>Saúde</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="local">Local</label>
                 <input class="form-control" id="local" type="text" v-model="gasto.lugar" />
