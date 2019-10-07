@@ -8,7 +8,12 @@ import moment from 'moment'
 import money from 'v-money'
 
 Vue.use(moment)
-Vue.use(money, { precision: 2 })
+Vue.use(money, {
+    precision: 2,
+    prefix: 'R$ ',
+    decimal: ',',
+    thousands: '.'
+})
 
 Vue.config.productionTip = false
 

@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="valor">Valor</label>
-                <input class="form-control" id="valor" type="number" v-model="gasto.valor" />
+                <money class="form-control" id="valor" v-model="gasto.valor"></money>
             </div>
             <div class="form-group">
                 <label for="valor">Data</label>
@@ -43,7 +43,7 @@
         <router-link :to="{name:'relatorio'}">
             <button class="btn btn-light">Voltar</button>
         </router-link>
-        <button class="btn btn-danger">Excluir</button>
+        <button @click="remove" class="btn btn-danger">Excluir</button>
     </div>
 </template>
 
@@ -58,7 +58,10 @@ export default {
     data: function() {
         return {
             gasto: {},
-            date: ''
+            date: '',
+            payload: {
+                msg: 'chegou'
+            }
         }
     },
     methods: {
@@ -72,6 +75,13 @@ export default {
                 this.gasto.data_criacao = moment(
                     this.gasto.data_criacao
                 ).format('DD/MM/YYYY hh:mm:ss a')
+            })
+        },
+        remove() {
+            const url = `${baseApiUrl}/gastos/${this.$route.params.id}`
+            axios.delete(url).then(() => {
+                this.$toasted.global.defaultSuccess({ msg: 'Gasto removido' })
+                this.$router.push('/relatorio')
             })
         }
     },

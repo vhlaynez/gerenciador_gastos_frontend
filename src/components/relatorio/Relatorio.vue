@@ -71,7 +71,7 @@ export default {
     filters: {
         formatDate: function(e) {
             if (e) {
-                return moment(e).format('MM/DD/YYYY')
+                return moment(e).format('DD/MM/YYYY')
             }
         }
     }

@@ -3,11 +3,17 @@
         <form>
             <div class="form-group">
                 <label for="local">Local</label>
-                <input class="form-control" id="local" type="text" v-model="gasto.lugar" />
+                <input
+                    class="form-control"
+                    placeholder="Ex: Posto de Combustível"
+                    id="local"
+                    type="text"
+                    v-model="gasto.lugar"
+                />
             </div>
             <div class="form-group">
                 <label for="valor">Valor</label>
-                <money class="form-control" id="valor" v-model="gasto.valor"></money>
+                <money placeholder="R$0,00" class="form-control" id="valor" v-model="gasto.valor"></money>
             </div>
             <div class="form-group">
                 <label for="valor">Data</label>
