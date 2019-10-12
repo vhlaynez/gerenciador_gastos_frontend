@@ -5,10 +5,15 @@
             <div style="padding-top:10px;" class="row">
                 <div v-for="(gastos,id_gasto) in gastos" :key="id_gasto" class="col-md-4">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="card-title">{{gastos.lugar}}</div>
+                        <div class="card-header bg-info text-center ">
+                         <h3>
+                              <i class="fa fa-map-marker" aria-hidden="true"></i>  {{gastos.lugar}} 
+                             </h3>
                         </div>
-                        <div class="card-text" style="text-align:center;">{{gastos.valor}}</div>
+                        <div class="card-body">
+                            
+                        </div>
+                        <div class="card-text" style="text-align:center;">R$ {{gastos.valor}}</div>
                     </div>
                 </div>
             </div>

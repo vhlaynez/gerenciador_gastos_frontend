@@ -4,10 +4,10 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Data</th>
-                    <th>Categoria</th>
-                    <th>Local</th>
-                    <th>Valor</th>
+                    <th><i class="fa fa-calendar" aria-hidden="true"></i> Data</th>
+                    <th><i class="fa fa-tag" aria-hidden="true"></i> Categoria</th>
+                    <th><i class="fa fa-map-marker" aria-hidden="true"></i> Local</th>
+                    <th><i class="fa fa-usd" aria-hidden="true"></i> Valor</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,7 +30,7 @@
             type="button"
             @click="getGasto"
             class="btn btn-secondary"
-        >Carregar mais</button>
+        ><i class="fa fa-refresh" aria-hidden="true"></i> Carregar mais</button>
     </div>
 </template>
 

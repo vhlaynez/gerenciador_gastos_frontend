@@ -41,9 +41,10 @@
             </div>
         </form>
         <router-link :to="{name:'relatorio'}">
-            <button class="btn btn-light">Voltar</button>
+            <button style="margin-right:10px;" class="btn btn-light">Voltar</button>
         </router-link>
-        <button @click="remove" class="btn btn-danger">Excluir</button>
+        <button @click="remove" style="margin-right:10px;" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Excluir</button>
+        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar</button>
     </div>
 </template>
 
