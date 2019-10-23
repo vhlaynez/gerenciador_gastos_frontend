@@ -2,6 +2,21 @@
     <div class="container">
         <form>
             <div class="form-group">
+                <div class="form-group">
+                    <label for="local">Categoria</label>
+                    <select
+                        class="form-control"
+                        id="exampleFormControlSelect1"
+                        v-model="gasto.categoria"
+                    >
+                        <option>Lazer</option>
+                        <option>Educação</option>
+                        <option>Transporte</option>
+                        <option>Alimentação</option>
+                        <option>Mercado</option>
+                        <option>Saúde</option>
+                    </select>
+                </div>
                 <label for="local">Local</label>
                 <input
                     class="form-control"
@@ -41,10 +56,17 @@ export default {
     methods: {
         save() {
             const url = `${baseApiUrl}/gastos`
-            axios.post(url, this.gasto).then(() => {
-                this.$toasted.global.defaultSuccess()
-                this.gasto = {}
-            })
+            axios
+                .post(url, this.gasto)
+                .then(() => {
+                    this.$toasted.global.defaultSuccess()
+                    this.gasto = {}
+                })
+                .catch(error => {
+                    this.$toasted.global.defaultError({
+                        msg: error.response.data
+                    })
+                })
         }
     }
 }

@@ -15,37 +15,45 @@ export default {
     name: 'Home',
     data: function() {
         return {
-            gastos: [],
-            series: []
+            gastos: []
         }
     },
 
     methods: {
         get() {
             const url = `${baseApiUrl}/grafico`
-            axios(url).then(res => {
-                this.gastos = res.data
-                var options = {
-                    theme: {
-                        palette: 'palette9'
-                    },
+            axios(url)
+                .then(res => {
+                    this.gastos = res.data
+                    var options = {
+                        theme: {
+                            palette: 'palette9'
+                        },
 
-                    series: [44, 55, 13, 43, 22],
-                    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-                    chart: {
-                        type: 'pie'
+                        series: [],
+                        labels: [],
+                        chart: {
+                            type: 'pie',
+                            height: '500'
+                        }
                     }
-                }
-                for (let i = 0; i < this.gastos.length; i++) {
-                    options.labels[i] = this.gastos[i].categoria
-                    options.series[i] = this.gastos[i].valor
-                }
-                var chart = new ApexCharts(
-                    document.querySelector('#chart'),
-                    options
-                )
-                chart.render()
-            })
+
+                    for (let i = 0; i < this.gastos.length; i++) {
+                        options.labels[i] = this.gastos[i].categoria
+                        options.series[i] = this.gastos[i].valor
+                    }
+                    var chart = new ApexCharts(
+                        document.querySelector('#chart'),
+                        options
+                    )
+                    chart.render()
+                })
+                .catch(err => {
+                    this.$toasted.global.defaultError({
+                        msg: 'Não foi possível carregar o grafico'
+                    })
+                    console.log(err)
+                })
         }
     },
     mounted() {
@@ -55,4 +63,7 @@ export default {
 </script>
 
 <style>
+#chart {
+    height: 200px;
+}
 </style>

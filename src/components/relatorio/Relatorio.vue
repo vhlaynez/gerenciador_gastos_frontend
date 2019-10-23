@@ -4,10 +4,18 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th><i class="fa fa-calendar" aria-hidden="true"></i> Data</th>
-                    <th><i class="fa fa-tag" aria-hidden="true"></i> Categoria</th>
-                    <th><i class="fa fa-map-marker" aria-hidden="true"></i> Local</th>
-                    <th><i class="fa fa-usd" aria-hidden="true"></i> Valor</th>
+                    <th>
+                        <i class="fa fa-calendar" aria-hidden="true"></i> Data
+                    </th>
+                    <th>
+                        <i class="fa fa-tag" aria-hidden="true"></i> Categoria
+                    </th>
+                    <th>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> Local
+                    </th>
+                    <th>
+                        <i class="fa fa-usd" aria-hidden="true"></i> Valor
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -25,12 +33,9 @@
                 </tr>
             </tbody>
         </table>
-        <button
-            v-if="loadMore"
-            type="button"
-            @click="getGasto"
-            class="btn btn-secondary"
-        ><i class="fa fa-refresh" aria-hidden="true"></i> Carregar mais</button>
+        <button v-if="loadMore" type="button" @click="getGasto" class="btn btn-secondary">
+            <i class="fa fa-refresh" aria-hidden="true"></i> Carregar mais
+        </button>
     </div>
 </template>
 
@@ -53,16 +58,30 @@ export default {
         get() {
             const url = `${baseApiUrl}/gastos`
 
-            axios(url).then(res => (this.gastos = res.data))
+            axios(url)
+                .then(res => (this.gastos = res.data))
+                .catch(err => {
+                    this.$toasted.global.defaultError({
+                        msg: 'Não foi possível carregar os gastos'
+                    })
+                    console.log(err)
+                })
         },
         getGasto() {
             this.page++
             const url = `${baseApiUrl}/gastos?page=${this.page}`
-            axios(url).then(res => {
-                this.gastos.data = this.gastos.data.concat(res.data.data)
-                if (res.data.data.length === 0 || res.data.data.length < 10)
-                    this.loadMore = false
-            })
+            axios(url)
+                .then(res => {
+                    this.gastos.data = this.gastos.data.concat(res.data.data)
+                    if (res.data.data.length === 0 || res.data.data.length < 10)
+                        this.loadMore = false
+                })
+                .catch(err => {
+                    this.$toasted.global.defaultError({
+                        msg: 'Não foi possível carregar os gastos'
+                    })
+                    console.log(err)
+                })
         }
     },
     mounted() {

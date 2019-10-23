@@ -29,7 +29,7 @@
                 <label for="valor">Data</label>
                 <input class="form-control" id="valor" type="date" v-model="gasto.data_gasto" />
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="valor">Cadastrado em:</label>
                 <input
                     class="form-control"
@@ -38,13 +38,17 @@
                     readonly
                     v-model="gasto.data_criacao"
                 />
-            </div>
+            </div>-->
         </form>
         <router-link :to="{name:'relatorio'}">
             <button style="margin-right:10px;" class="btn btn-light">Voltar</button>
         </router-link>
-        <button @click="remove" style="margin-right:10px;" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Excluir</button>
-        <button class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar</button>
+        <button @click="remove" style="margin-right:10px;" class="btn btn-danger">
+            <i class="fa fa-trash-o" aria-hidden="true"></i> Excluir
+        </button>
+        <button @click="update" class="btn btn-success">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar
+        </button>
     </div>
 </template>
 
@@ -59,10 +63,7 @@ export default {
     data: function() {
         return {
             gasto: {},
-            date: '',
-            payload: {
-                msg: 'chegou'
-            }
+            date: ''
         }
     },
     methods: {
@@ -84,6 +85,19 @@ export default {
                 this.$toasted.global.defaultSuccess({ msg: 'Gasto removido' })
                 this.$router.push('/relatorio')
             })
+        },
+        update() {
+            const url = `${baseApiUrl}/gastos/${this.$route.params.id}`
+            axios
+                .put(url, this.gasto)
+                .then(() => {
+                    this.$toasted.global.defaultSuccess()
+                })
+                .catch(error => {
+                    this.$toasted.global.defaultError({
+                        msg: error.response.data
+                    })
+                })
         }
     },
     mounted() {
