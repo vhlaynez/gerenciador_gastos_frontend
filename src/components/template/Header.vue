@@ -7,15 +7,15 @@
                 class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
-                data-target="#navbarsExampleDefault"
-                aria-controls="navbarsExampleDefault"
+                data-target="#menu"
+                aria-controls="menu"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <router-link :to="{name:'adicionar'}" class="nav-link">Adicionar</router-link>

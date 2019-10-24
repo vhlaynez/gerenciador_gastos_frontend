@@ -35,9 +35,9 @@
                 <input class="form-control" id="valor" type="date" v-model="gasto.data_gasto" />
             </div>
         </form>
-        <router-link :to="{name:'relatorio'}">
-            <button class="btn btn-light">Voltar</button>
-        </router-link>
+
+        <button @click="back" class="btn btn-light">Voltar</button>
+
         <button @click="save" class="btn btn-success">Adicionar</button>
     </div>
 </template>
@@ -67,6 +67,9 @@ export default {
                         msg: error.response.data
                     })
                 })
+        },
+        back() {
+            this.$router.go(-1)
         }
     }
 }

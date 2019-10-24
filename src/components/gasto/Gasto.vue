@@ -40,9 +40,9 @@
                 />
             </div>-->
         </form>
-        <router-link :to="{name:'relatorio'}">
-            <button style="margin-right:10px;" class="btn btn-light">Voltar</button>
-        </router-link>
+
+        <button @click="back" style="margin-right:10px;" class="btn btn-light">Voltar</button>
+
         <button @click="remove" style="margin-right:10px;" class="btn btn-danger">
             <i class="fa fa-trash-o" aria-hidden="true"></i> Excluir
         </button>
@@ -98,6 +98,9 @@ export default {
                         msg: error.response.data
                     })
                 })
+        },
+        back() {
+            this.$router.go(-1)
         }
     },
     mounted() {

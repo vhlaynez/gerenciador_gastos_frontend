@@ -64,7 +64,6 @@ export default {
                     this.$toasted.global.defaultError({
                         msg: 'Não foi possível carregar os gastos'
                     })
-                    console.log(err)
                 })
         },
         getGasto() {
@@ -80,7 +79,6 @@ export default {
                     this.$toasted.global.defaultError({
                         msg: 'Não foi possível carregar os gastos'
                     })
-                    console.log(err)
                 })
         }
     },
