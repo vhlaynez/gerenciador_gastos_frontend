@@ -2,17 +2,34 @@
     <div>
         <div class="container">
             <div class="display-4">Últimos gastos</div>
-            <div style="padding-top:10px;" class="row">
-                <div v-for="(gastos,id_gasto) in gastos" :key="id_gasto" class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-info text-center">
-                            <h3>
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <div class="card-columns">
+                <div v-for="(gastos,id_gasto) in gastos" :key="id_gasto">
+                    <div
+                        class="shadow card"
+                        style="background-color:#F8f9fa; margin-top:5px; text-decoration:none;"
+                    >
+                        <div class="card-body text-center">
+                            <p class="card-text">
+                                <i
+                                    class="fa fa-map-marker"
+                                    aria-hidden="true"
+                                    style="text-decoration:none;"
+                                ></i>
                                 {{gastos.lugar}}
-                            </h3>
+                            </p>
+
+                            <p class="card-text">
+                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                {{gastos.categoria}}
+                            </p>
+                            <p class="card-text">
+                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                {{gastos.valor}}
+                            </p>
+                            <router-link :to="{name:'gasto',params:{id:`${gastos.id_gasto}`}}">
+                                <button class="btn btn-outline-secondary">Detalhes</button>
+                            </router-link>
                         </div>
-                        <div class="card-body"></div>
-                        <div class="card-text" style="text-align:center;">R$ {{gastos.valor}}</div>
                     </div>
                 </div>
             </div>
@@ -41,7 +58,6 @@ export default {
                     this.$toasted.global.defaultError({
                         msg: 'Não foi possível carregar os gastos'
                     })
-                    console.log(err)
                 })
         }
     },
@@ -52,4 +68,7 @@ export default {
 </script>
 
 <style>
+a.card-block {
+    color: black;
+}
 </style>
