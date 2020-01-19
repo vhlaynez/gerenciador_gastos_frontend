@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style>
-
+ .content {
+    grid-area: content;
+}
 </style>

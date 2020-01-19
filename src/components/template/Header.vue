@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="header">
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
             <router-link :to="{name:'home'}" class="navbar-brand">Controle de Gastos</router-link>
 
@@ -39,4 +39,7 @@ export default {
 </script>
 
 <style>
+.header{
+    grid-area: header;
+}
 </style>
