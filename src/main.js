@@ -19,7 +19,7 @@ Vue.use(money, {
 
 Vue.config.productionTip = false
 
-axios.interceptors.request.use(
+/* axios.interceptors.request.use(
     async config => {
         config.headers.api_key = authSecret
         return config
@@ -28,7 +28,7 @@ axios.interceptors.request.use(
         // I cand handle a request with errors here
         return Promise.reject(error)
     }
-)
+) */
 
 new Vue({
     router,

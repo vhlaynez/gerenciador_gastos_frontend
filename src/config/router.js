@@ -6,7 +6,7 @@ import Adicionar from '@/components/adicionar/Adicionar.vue';
 import Relatorio from '@/components/relatorio/Relatorio.vue';
 import Gasto from '@/components/gasto/Gasto.vue';
 import Grafico from '@/components/grafico/Grafico.vue';
-
+import Auth from '@/components/auth/Auth';
 
 Vue.use(VueRouter)
 
@@ -16,7 +16,7 @@ const routes = [
     { path: '/relatorio', name: 'relatorio', component: Relatorio },
     { path: '/gasto/:id', name: 'gasto', component: Gasto },
     { path: '/grafico', name: 'grafico', component: Grafico },
-
+    { path: '/auth', name: 'auth', component: Auth },
 
 ]
 
