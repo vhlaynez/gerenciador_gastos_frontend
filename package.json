@@ -15,7 +15,7 @@
         "font-awesome": "4.7.0",
         "v-money": "^0.8.1",
         "vue": "^2.6.10",
-        "vue-moment": "^4.0.0",
+        "vue-moment": "^4.1.0",
         "vue-router": "^3.1.2",
         "vue-toasted": "1.1.24"
     },
